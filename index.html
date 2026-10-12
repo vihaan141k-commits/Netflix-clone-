@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A Netflix-inspired streaming homepage built with HTML, CSS and JavaScript." />
+  <title>StreamFlix — Watch something great</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://image.tmdb.org" />
+</head>
+<body>
+  <header class="navbar" id="navbar">
+    <a class="brand" href="#" aria-label="StreamFlix home">STREAM<span>FLIX</span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a class="active" href="#home">Home</a>
+      <a href="#trending">TV Shows</a>
+      <a href="#movies">Movies</a>
+      <a href="#my-list">My List</a>
+    </nav>
+    <div class="nav-actions">
+      <label class="search-box" aria-label="Search titles">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" type="search" placeholder="Titles, people, genres" autocomplete="off" />
+      </label>
+      <button class="icon-button" id="notificationsBtn" aria-label="Notifications" title="Notifications">♧</button>
+      <button class="profile-button" id="profileBtn" aria-label="Profile menu">S</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-label="Featured title">
+      <div class="hero-backdrop"></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span class="tiny-mark">S</span> STREAMFLIX ORIGINAL</p>
+        <h1 id="heroTitle">THE LAST<br />FRONTIER</h1>
+        <div class="hero-meta"><span class="match">98% Match</span><span>2026</span><span class="rating">16+</span><span>1 Season</span><span class="quality">4K UHD</span></div>
+        <p class="hero-description" id="heroDescription">At the edge of the known world, one decision can change everything. A gripping story of survival, secrets, and the people who refuse to give up.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-light" id="playFeatured"><span class="play-symbol">▶</span> Play</button>
+          <button class="btn btn-muted" id="moreInfo"><span class="info-symbol">i</span> More Info</button>
+        </div>
+      </div>
+      <div class="hero-bottom-fade"></div>
+      <div class="age-badge">16+</div>
+    </section>
+
+    <section class="content-area">
+      <div class="section-heading" id="trending">
+        <div><h2>Trending Now</h2><p class="section-subtitle">The stories everyone's talking about</p></div>
+        <div class="row-controls"><button class="arrow-btn" data-scroll="-1" data-target="trendingRow" aria-label="Scroll trending left">‹</button><button class="arrow-btn" data-scroll="1" data-target="trendingRow" aria-label="Scroll trending right">›</button></div>
+      </div>
+      <div class="poster-row" id="trendingRow"></div>
+
+      <div class="section-heading" id="popular">
+        <div><h2>Popular on StreamFlix</h2><p class="section-subtitle">Your next favourite is waiting</p></div>
+        <div class="row-controls"><button class="arrow-btn" data-scroll="-1" data-target="popularRow" aria-label="Scroll popular left">‹</button><button class="arrow-btn" data-scroll="1" data-target="popularRow" aria-label="Scroll popular right">›</button></div>
+      </div>
+      <div class="poster-row" id="popularRow"></div>
+
+      <div class="section-heading" id="movies">
+        <div><h2>Because You Watched Sci-Fi</h2><p class="section-subtitle">Big ideas. Bigger worlds.</p></div>
+        <div class="row-controls"><button class="arrow-btn" data-scroll="-1" data-target="sciFiRow" aria-label="Scroll sci-fi left">‹</button><button class="arrow-btn" data-scroll="1" data-target="sciFiRow" aria-label="Scroll sci-fi right">›</button></div>
+      </div>
+      <div class="poster-row" id="sciFiRow"></div>
+
+      <section class="my-list-section" id="my-list">
+        <div class="section-heading"><div><h2>My List</h2><p class="section-subtitle">Titles you want to come back to</p></div></div>
+        <div class="poster-row" id="myListRow"></div>
+        <p class="empty-list" id="emptyList">Your list is empty for now. Select the ＋ button on any title to save it here.</p>
+      </section>
+
+      <p class="no-results" id="noResults" hidden>No titles found. Try another search.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-social"><span>f</span><span>◎</span><span>▶</span><span>♪</span></div>
+    <div class="footer-links"><a href="#">Audio Description</a><a href="#">Help Centre</a><a href="#">Gift Cards</a><a href="#">Media Centre</a><a href="#">Investor Relations</a><a href="#">Jobs</a><a href="#">Terms of Use</a><a href="#">Privacy</a><a href="#">Legal Notices</a><a href="#">Cookie Preferences</a><a href="#">Corporate Information</a><a href="#">Contact Us</a></div>
+    <button class="service-code">Service Code</button>
+    <p>© 1997–2026 StreamFlix, Inc. (student project)</p>
+  </footer>
+
+  <div class="modal" id="titleModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-backdrop" data-close="true"></div>
+    <article class="modal-card">
+      <button class="modal-close" data-close="true" aria-label="Close details">×</button>
+      <div class="modal-art" id="modalArt"></div>
+      <div class="modal-body">
+        <p class="eyebrow"><span class="tiny-mark">S</span> STREAMFLIX</p>
+        <h2 id="modalTitle">Title</h2>
+        <div class="hero-meta" id="modalMeta"></div>
+        <p id="modalDescription"></p>
+        <div class="modal-actions"><button class="btn btn-light" id="modalPlay">▶ Play</button><button class="round-add" id="modalAdd" aria-label="Add to My List">＋</button></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
